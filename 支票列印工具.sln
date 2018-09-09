@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "支票列印工具", "支票列印工具\支票列印工具.csproj", "{4785CED3-07F6-432F-8AB1-28F4C9609E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpUpdate", "SharpUpdate\SharpUpdate.csproj", "{98484D9B-4F91-4D22-985C-7489F68AC33E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ChequeSetup", "Setup2\Setup2.vdproj", "{DF21CDED-83D0-4789-945B-29BF89009E3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4785CED3-07F6-432F-8AB1-28F4C9609E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4785CED3-07F6-432F-8AB1-28F4C9609E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4785CED3-07F6-432F-8AB1-28F4C9609E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4785CED3-07F6-432F-8AB1-28F4C9609E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98484D9B-4F91-4D22-985C-7489F68AC33E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98484D9B-4F91-4D22-985C-7489F68AC33E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98484D9B-4F91-4D22-985C-7489F68AC33E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98484D9B-4F91-4D22-985C-7489F68AC33E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF21CDED-83D0-4789-945B-29BF89009E3B}.Debug|Any CPU.ActiveCfg = Debug
+		{DF21CDED-83D0-4789-945B-29BF89009E3B}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
