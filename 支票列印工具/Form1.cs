@@ -536,6 +536,26 @@ namespace 支票列印工具
                             mCurrency +
                           " ) ORDER BY TA001, TA004";
 
+            //主Table
+            var Conn = new SqlConnection(makeConnectString());
+            SqlDataAdapter da1 = null;// = new SqlDataAdapter(mSQL, Conn);
+            DataTable dd = null;// = new DataTable("Main");
+            //da1.Fill(dd);
+
+            bool isupdate = false;
+                        
+            do 
+            {
+                if (dd != null)
+                {
+                    dd.Clear();
+                }
+                da1 = new SqlDataAdapter(mSQL, Conn);
+                dd = new DataTable("Main");
+                da1.Fill(dd);
+                CheckZAExist(true, out isupdate);
+            } while (isupdate);
+
             /*
              Detail
              */
@@ -565,11 +585,8 @@ namespace 支票列印工具
                 btnClear.Enabled = true;
             }
 
-            //主Table
-            var Conn = new SqlConnection(makeConnectString());
-            var da1 = new SqlDataAdapter(mSQL, Conn);
-            DataTable dd = new DataTable("Main");
-            da1.Fill(dd);
+
+
 
             gridControl1.DataSource = dd;
 
@@ -637,5 +654,75 @@ namespace 支票列印工具
             SetGridView2Filter();
             tbTitle.Text = "";
         }
+
+        private void barbtnCheckZA_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bool isupdate = false;
+            CheckZAExist(false,out isupdate);
+        }
+
+        private bool CheckZAExist(bool notify, out bool isupdate)
+        {
+            isupdate = false;
+            string mSQL = " SELECT PURMA.*,PURZA.*,'0001' AS ZZZZZ FROM PURMA " +
+                          " LEFT JOIN PURZA ON ZA001 = MA001 " +
+                          " WHERE ZA002 IS NULL ";
+            try
+
+            {
+                using (SqlConnection conn = new SqlConnection(makeConnectString()))
+                {
+                    conn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(mSQL, conn))
+                    {
+                        DataTable dd = new DataTable("PURZA");
+                        da.Fill(dd);
+
+                        if (dd.Rows.Count > 0)
+                        {
+                            if (notify)
+                            {
+                                MessageBox.Show($"有未更新的廠商資料 共{dd.Rows.Count.ToString()}筆！\r\n請按確定更新！", "提示");
+                            }
+                            
+
+                            using (SqlBulkCopy bulkcopy = new SqlBulkCopy(conn))
+                            {
+                                //設定一個批次量寫入多少筆資料
+                                bulkcopy.BatchSize = 1000;
+                                //設定逾時的秒數
+                                bulkcopy.BulkCopyTimeout = 60;
+
+                                bulkcopy.ColumnMappings.Add("MA001", "ZA001");
+                                bulkcopy.ColumnMappings.Add("ZZZZZ", "ZA002");
+                                bulkcopy.ColumnMappings.Add("MA003", "ZA003");
+
+                                bulkcopy.DestinationTableName = "dbo.PURZA";
+                                bulkcopy.WriteToServer(dd);
+                                isupdate = true;
+                            }
+                        }
+                        else
+                        {
+                            if (!notify)
+                            {
+                                MessageBox.Show($"沒有需要更新的資料！", "提示");
+                            }
+                            
+                        }
+                        
+
+                    }
+                    conn.Dispose();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("PURZA 新增資料發生錯誤！");
+                return false;
+            }
+            return true;
+        }
+        
     }
 }

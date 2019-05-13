@@ -163,6 +163,8 @@
     <None Include="Resources\Sign2.ico" />
     <None Include="Resources\star0.png" />
     <None Include="Resources\star1.png" />
+    <None Include="Resources\COPY.png" />
+    <None Include="Resources\batch.png" />
     <Content Include="未命名 - 1.ico" />
   </ItemGroup>
   <ItemGroup>

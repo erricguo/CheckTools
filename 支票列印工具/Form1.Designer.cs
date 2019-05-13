@@ -39,6 +39,7 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnSearchCheck = new DevExpress.XtraEditors.SimpleButton();
             this.btnClear = new DevExpress.XtraEditors.SimpleButton();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -48,16 +49,17 @@
             this.tbTitle = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barbtnQuery = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnReportDesign = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnExcel = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnSignBack = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnCheckZA = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnClose = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.barbtnQuery = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.dtE = new DevExpress.XtraEditors.DateEdit();
@@ -80,7 +82,6 @@
             this.lbPW = new DevExpress.XtraEditors.LabelControl();
             this.tbID = new DevExpress.XtraEditors.TextEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.btnSearchCheck = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -188,6 +189,18 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1022, 687);
             this.xtraTabPage1.Text = "資料查詢";
+            // 
+            // btnSearchCheck
+            // 
+            this.btnSearchCheck.Appearance.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchCheck.Appearance.Options.UseFont = true;
+            this.btnSearchCheck.Image = global::支票列印工具.Properties.Resources._2;
+            this.btnSearchCheck.Location = new System.Drawing.Point(11, 3);
+            this.btnSearchCheck.Name = "btnSearchCheck";
+            this.btnSearchCheck.Size = new System.Drawing.Size(126, 46);
+            this.btnSearchCheck.TabIndex = 16;
+            this.btnSearchCheck.Text = "查詢支票";
+            this.btnSearchCheck.Click += new System.EventHandler(this.btnSearchCheck_Click);
             // 
             // btnClear
             // 
@@ -303,8 +316,9 @@
             this.barbtnExcel,
             this.barbtnClose,
             this.barbtnSignBack,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 7;
+            this.barButtonItem1,
+            this.barbtnCheckZA});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -317,21 +331,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnReportDesign),
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnExcel),
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnSignBack),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barbtnCheckZA),
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnClose)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.Text = "Tools";
-            // 
-            // barbtnQuery
-            // 
-            this.barbtnQuery.Caption = "查詢支票";
-            this.barbtnQuery.Glyph = global::支票列印工具.Properties.Resources._2;
-            this.barbtnQuery.Id = 0;
-            this.barbtnQuery.ItemAppearance.Normal.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barbtnQuery.ItemAppearance.Normal.Options.UseFont = true;
-            this.barbtnQuery.Name = "barbtnQuery";
-            this.barbtnQuery.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barbtnPrint
             // 
@@ -377,6 +382,17 @@
             this.barbtnSignBack.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barbtnSignBack.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnSignBack_ItemClick);
             // 
+            // barbtnCheckZA
+            // 
+            this.barbtnCheckZA.Caption = "更新廠商";
+            this.barbtnCheckZA.Glyph = global::支票列印工具.Properties.Resources.batch;
+            this.barbtnCheckZA.Id = 7;
+            this.barbtnCheckZA.ItemAppearance.Normal.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold);
+            this.barbtnCheckZA.ItemAppearance.Normal.Options.UseFont = true;
+            this.barbtnCheckZA.Name = "barbtnCheckZA";
+            this.barbtnCheckZA.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barbtnCheckZA.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnCheckZA_ItemClick);
+            // 
             // barbtnClose
             // 
             this.barbtnClose.Caption = "結束";
@@ -415,6 +431,16 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1027, 42);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 720);
+            // 
+            // barbtnQuery
+            // 
+            this.barbtnQuery.Caption = "查詢支票";
+            this.barbtnQuery.Glyph = global::支票列印工具.Properties.Resources._2;
+            this.barbtnQuery.Id = 0;
+            this.barbtnQuery.ItemAppearance.Normal.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barbtnQuery.ItemAppearance.Normal.Options.UseFont = true;
+            this.barbtnQuery.Name = "barbtnQuery";
+            this.barbtnQuery.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // barButtonItem1
             // 
@@ -686,18 +712,6 @@
             this.defaultLookAndFeel1.EnableBonusSkins = true;
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "Dark Side";
             // 
-            // btnSearchCheck
-            // 
-            this.btnSearchCheck.Appearance.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchCheck.Appearance.Options.UseFont = true;
-            this.btnSearchCheck.Image = global::支票列印工具.Properties.Resources._2;
-            this.btnSearchCheck.Location = new System.Drawing.Point(11, 3);
-            this.btnSearchCheck.Name = "btnSearchCheck";
-            this.btnSearchCheck.Size = new System.Drawing.Size(126, 46);
-            this.btnSearchCheck.TabIndex = 16;
-            this.btnSearchCheck.Text = "查詢支票";
-            this.btnSearchCheck.Click += new System.EventHandler(this.btnSearchCheck_Click);
-            // 
             // Form1
             // 
             this.Appearance.Options.UseFont = true;
@@ -794,6 +808,7 @@
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraEditors.SimpleButton btnSearchCheck;
+        private DevExpress.XtraBars.BarButtonItem barbtnCheckZA;
     }
 }
 
